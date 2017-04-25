@@ -1,0 +1,12 @@
+<!-- HMT Bus GO! (WXSS VER.) -->
+<!-- 实时校巴状态页 -->
+
+<page>
+	<view class="page">
+		<view class="page__hd">
+			<view class="page__title">实时校巴状态清单</view>
+			<view class="page__desc">查看实时校巴终端的在线或离线。</view>
+		</view>
+
+	</view>
+</page>
