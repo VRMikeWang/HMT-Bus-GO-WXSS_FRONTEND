@@ -1,0 +1,12 @@
+<!-- HMT Bus GO! (WXSS VER.) -->
+<!-- 线路详情页 -->
+
+<page>
+	<view class="page">
+		<view class="page__hd">
+			<view class="page__title">1号线 [工程学院 开往 荷园]</view>
+			<view class="page__desc">发班时间：07:10 ~ 22:00</view>
+		</view>
+
+	</view>
+</page>
