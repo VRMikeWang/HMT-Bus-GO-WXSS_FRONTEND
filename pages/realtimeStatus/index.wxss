@@ -1,0 +1,3 @@
+.page__hd {
+    background: url('/source/banner/realtimebanner.png') no-repeat right bottom;
+}
