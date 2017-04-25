@@ -1,0 +1,12 @@
+<!-- HMT Bus GO! (WXSS VER.) -->
+<!-- 站点搜索结果页 -->
+
+<page>
+	<view class="page">
+		<view class="page__hd">
+			<view class="page__title">站点检索结果</view>
+			<view class="page__desc">共找到 0 个站点</view>
+		</view>
+
+	</view>
+</page>
