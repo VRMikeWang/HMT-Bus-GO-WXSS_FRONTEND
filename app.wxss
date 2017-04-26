@@ -1,6 +1,6 @@
 @import 'weui.wxss';
 
-page{
+page {
     background-color: #f8f8f8;
     font-size: 16px;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
@@ -16,6 +16,10 @@ page{
 .page__bd_spacing {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.page__bd_padding-top {
+    padding-top: 15px;
 }
 
 .page__ft{
@@ -60,4 +64,17 @@ image.banner {
     color: #888888;
     text-align: left;
     font-size: 14px;
+}
+
+.wrap {
+    padding-top: 7px;
+    padding-bottom: 8px;
+}
+
+.text-primary {
+	color: #1AAD19;
+}
+
+.text-error {
+	color: #E64340;
 }
