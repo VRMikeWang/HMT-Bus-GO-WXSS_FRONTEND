@@ -12,73 +12,93 @@
 				<view class="weui-cell weui-cell_switch">
 					<view class="weui-cell__bd">自动刷新</view>
 					<view class="weui-cell__ft">
-						<switch checked=""></switch>
+						<switch checked="{{switchChecked}}" bindchange="autoRefresh"></switch>
 					</view>
 				</view>
 			</view>
 			<view class="wrap"></view>
 			<view class="page__bd page__bd_spacing">
-				<button class="weui-btn" type="primary">刷新数据</button>
+				<button class="weui-btn" type="primary" bindtap="refresh">刷新数据</button>
 			</view>
-			<view class="weui-form-preview">
-				<view class="weui-form-preview__hd">
-					<view class="weui-form-preview__label">车牌号</view>
-					<view class="weui-form-preview__value_in-hd">粤C31009</view>
-				</view>
-				<view class="weui-form-preview__bd">
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">在线状态</view>
-						<view class="weui-form-preview__value text-primary">在线</view>
-					</view>
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">执行线路</view>
-						<view class="weui-form-preview__value">校巴1号线</view>
-					</view>
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">当前站</view>
-						<view class="weui-form-preview__value">教四</view>
-					</view>
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">下一站</view>
-						<view class="weui-form-preview__value">经管学院</view>
-					</view>
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">GPS最后更新时间</view>
-						<view class="weui-form-preview__value">2017-04-26 16:54</view>
-					</view>
-				</view>
-			</view>
-			
-			<view class="wrap"></view>
 
-			<view class="weui-form-preview">
-				<view class="weui-form-preview__hd">
-					<view class="weui-form-preview__label">车牌号</view>
-					<view class="weui-form-preview__value_in-hd">粤C31078</view>
+			<block wx:for="{{online}}" wx:for-item="online">
+				<view class="weui-form-preview">
+					<view class="weui-form-preview__hd">
+						<view class="weui-form-preview__label">车牌号</view>
+						<view class="weui-form-preview__value_in-hd">{{online.BUS_NUM}}</view>
+					</view>
+					<view class="weui-form-preview__bd">
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">在线状态</view>
+							<view class="weui-form-preview__value text-primary">在线</view>
+						</view>
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">执行线路</view>
+							<view class="weui-form-preview__value">
+								<block wx:if="{{online.LINE_NAME}}">{{online.LINE_NAME}}</block>
+								<block wx:else>未知</block>
+							</view>
+						</view>
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">当前站</view>
+							<view class="weui-form-preview__value">
+								<block wx:if="{{online.CURRENT_STOP_NAME}}">{{online.CURRENT_STOP_NAME}}</block>
+								<block wx:else>未知</block>
+							</view>
+						</view>
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">下一站</view>
+							<view class="weui-form-preview__value">
+								<block wx:if="{{online.NEXT_STOP_NAME}}">{{online.NEXT_STOP_NAME}}</block>
+								<block wx:else>未知</block>
+							</view>
+						</view>
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">GPS最后更新时间</view>
+							<view class="weui-form-preview__value">{{online.UPDATE_TIME}}</view>
+						</view>
+					</view>
 				</view>
-				<view class="weui-form-preview__bd">
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">在线状态</view>
-						<view class="weui-form-preview__value text-error">离线</view>
+			
+				<view class="wrap"></view>
+
+			</block>
+
+
+			<block wx:for="{{offline}}" wx:for-item="offline">
+				<view class="weui-form-preview">
+					<view class="weui-form-preview__hd">
+						<view class="weui-form-preview__label">车牌号</view>
+						<view class="weui-form-preview__value_in-hd">{{offline.BUS_NUM}}</view>
 					</view>
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">执行线路</view>
-						<view class="weui-form-preview__value">不可用</view>
-					</view>
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">当前站</view>
-						<view class="weui-form-preview__value">不可用</view>
-					</view>
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">下一站</view>
-						<view class="weui-form-preview__value">不可用</view>
-					</view>
-					<view class="weui-form-preview__item">
-						<view class="weui-form-preview__label">GPS最后更新时间</view>
-						<view class="weui-form-preview__value">2017-04-26 16:54</view>
+					<view class="weui-form-preview__bd">
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">在线状态</view>
+							<view class="weui-form-preview__value text-error">离线</view>
+						</view>
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">执行线路</view>
+							<view class="weui-form-preview__value">不可用</view>
+						</view>
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">当前站</view>
+							<view class="weui-form-preview__value">不可用</view>
+						</view>
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">下一站</view>
+							<view class="weui-form-preview__value">不可用</view>
+						</view>
+						<view class="weui-form-preview__item">
+							<view class="weui-form-preview__label">GPS最后更新时间</view>
+							<view class="weui-form-preview__value">{{offline.UPDATE_TIME}}</view>
+						</view>
 					</view>
 				</view>
-			</view>
+
+				<view class="wrap"></view>
+
+			</block>
+
 		</view>
 	</view>
 </page>
