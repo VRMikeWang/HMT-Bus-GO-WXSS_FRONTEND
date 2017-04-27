@@ -11,7 +11,21 @@ Page({
 
 	data: {},
 
-	onLoad: function(options) {},
+	onLoad: function(options) {
+		wx.showLoading({
+			title: 'Loading',
+			mask: true
+		});
+		var instance = this;
+		wx.request({
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.getLineList.php',
+			method: 'GET',
+			success: function(res) {
+				instance.setData({lineList: res.data});
+				wx.hideLoading();
+			}
+		});
+	},
 
 	onReady: function() {},
 
