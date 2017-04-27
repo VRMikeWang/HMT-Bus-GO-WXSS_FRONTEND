@@ -11,7 +11,22 @@ Page({
 
 	data: {},
 
-	onLoad: function(options) {},
+	onLoad: function(options) {
+		wx.showLoading({
+			title: 'Loading',
+			mask: true
+		});
+		var instance = this;
+		wx.request({
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.getStopList.php',
+			method: 'GET',
+			success: function(res) {
+				instance.setData({stopList: res.data.stopList});
+				wx.hideLoading();
+			}
+		});
+		console.log(this.data);
+	},
 
 	onReady: function() {},
 
@@ -25,6 +40,12 @@ Page({
 
 	onReachBottom: function() {},
 
-	onShareAppMessage: function() {}
+	onShareAppMessage: function() {},
+
+	formSubmit: function(e) {
+		var formData = e.detail.value;
+		var link = '/pages/stopSearch/index?name=' + formData.name;
+		wx.navigateTo({url: link});
+	}
 
 });
