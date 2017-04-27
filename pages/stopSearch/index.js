@@ -11,7 +11,26 @@ Page({
 
 	data: {},
 
-	onLoad: function(options) {},
+	onLoad: function(options) {
+		wx.showLoading({
+			title: 'Loading',
+			mask: true
+		});
+		var instance = this;
+		var stopName = options.name;
+		wx.request({
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.stopSearch.php',
+			method: 'GET',
+			data: {name: stopName},
+			success: function(res) {
+				instance.setData({
+					totalResult: res.data.totalResult,
+					result: res.data.result
+				});
+				wx.hideLoading();
+			}
+		});
+	},
 
 	onReady: function() {},
 
