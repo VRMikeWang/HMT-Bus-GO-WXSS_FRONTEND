@@ -11,22 +11,39 @@
 
 App({
 
-	onLaunch: function(options) {
-		
-	},
+	onLaunch: function(options) {},
 
-	onShow: function(options) {
-		// Do something when show.
-	},
+	onShow: function(options) {},
 
-	onHide: function() {
-		// Do something when hide.
-	},
+	onHide: function() {},
 
 	onError: function(msg) {
 		console.log(msg);
 	},
 
-	//globalData: 'I am global data'
+	globalData: {
+		locationInfo: null
+	},
+
+	getLocationInfo: function(cb){
+	var app = this;
+	if (this.globalData.locationInfo) {
+			cb(this.globalData.locationInfo);
+		} else {
+			wx.getLocation({
+				type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+				success: function(res) {
+					app.globalData.locationInfo = res;
+					cb(app.globalData.locationInfo);
+				},
+				fail: function() {
+					// fail
+				},
+				complete: function() {
+					// complete
+				}
+			});
+		}
+	}
 
 });
