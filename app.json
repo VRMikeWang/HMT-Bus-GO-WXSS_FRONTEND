@@ -1,12 +1,10 @@
 {
 	"pages": [
-		"pages/homepage/index",
 		"pages/lineIndex/index",
 		"pages/lineInfo/index",
 		"pages/stopIndex/index",
 		"pages/stopInfo/index",
-		"pages/stopSearch/index",
-		"pages/realtimeStatus/index"
+		"pages/stopSearch/index"
 	],
 
 	"window": {
@@ -18,13 +16,8 @@
 
 	"tabBar": {
 		"list": [{
-			"pagePath": "pages/homepage/index",
-			"text": "首页",
-			"iconPath": "/source/icon/home.png",
-			"selectedIconPath": "/source/icon/home-selected.png"
-		}, {
 			"pagePath": "pages/lineIndex/index",
-			"text": "线路查询",
+			"text": "实时校巴",
 			"iconPath": "/source/icon/line.png",
 			"selectedIconPath": "/source/icon/line-selected.png"
 		}, {
@@ -32,21 +25,15 @@
 			"text": "站点查询",
 			"iconPath": "/source/icon/stop.png",
 			"selectedIconPath": "/source/icon/stop-selected.png"
-		}, {
-			"pagePath": "pages/realtimeStatus/index",
-			"text": "实时状态",
-			"iconPath": "/source/icon/realtime.png",
-			"selectedIconPath": "/source/icon/realtime-selected.png"
 		}],
 		"selectedColor": "#0099ff",
 		"borderStyle": "black"
 	},
 
 	"networkTimeout": {
-		"request": 10000,
-		"downloadFile": 10000
+		"request": 10000
 	},
 
-	"debug": true
+	"debug": false
 
 }
