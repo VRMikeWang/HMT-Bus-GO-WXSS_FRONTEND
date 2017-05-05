@@ -12,27 +12,8 @@ Page({
 	data: {},
 
 	onLoad: function(options) {
-		wx.showLoading({
-			title: 'Loading',
-			mask: true
-		});
 		var instance = this;
-		var stopId = options.id;
-		wx.request({
-			url: 'https://hbus.scau.edu.cn/wxss/wxss.getStopInfo.php',
-			method: 'GET',
-			data: {
-				id: stopId
-			},
-			success: function(res) {
-				instance.setData({
-					stopInfo: res.data.stopInfo,
-					totalLine: res.data.totalLine,
-					lineList: res.data.lineList
-				});
-				wx.hideLoading();
-			}
-		});
+		instance.loadStopInfo(options.id);
 	},
 
 	onReady: function() {},
@@ -47,6 +28,45 @@ Page({
 
 	onReachBottom: function() {},
 
-	onShareAppMessage: function() {}
+	onShareAppMessage: function() {},
+
+	loadStopInfo: function(id) {
+		var instance = this;
+		var stopId = id;
+		wx.showLoading({
+			title: '拉取站点详情',
+			mask: true
+		});
+		wx.request({
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.getStopInfo.php',
+			method: 'GET',
+			data: {
+				id: stopId
+			},
+			success: function(res) {
+				instance.setData({
+					stopInfo: res.data.stopInfo,
+					totalLine: res.data.totalLine,
+					lineList: res.data.lineList
+				});
+			},
+			fail: function() {
+				wx.showModal({
+					title: '请求超时',
+					content: '可能是您的网络环境不太好，亦或者是服务端出现了故障',
+					confirmText: '重新加载',
+					cancelText: '取消',
+					success: function(res) {
+						if (res.confirm) {
+							instance.loadStopInfo(stopId);
+						}
+					}
+				});
+			},
+			complete: function() {
+				wx.hideLoading();
+			}
+		});
+	}
 
 });
