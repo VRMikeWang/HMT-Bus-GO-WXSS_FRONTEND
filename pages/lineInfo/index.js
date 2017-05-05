@@ -14,37 +14,15 @@ Page({
 	data: {switchChecked: false},
 
 	onLoad: function(options) {
-		wx.showLoading({
-			title: 'Loading',
-			mask: true
-		});
 		var instance = this;
-		var lineId = options.id;
-		wx.request({
-			url: 'https://hbus.scau.edu.cn/wxss/wxss.getLineInfo.php',
-			method: 'GET',
-			data: {id: lineId},
-			success: function(res) {
-				instance.setData({
-					lineInfo: res.data.lineInfo,
-					totalStops: res.data.totalStops,
-					stops: res.data.stops
-				});
-				wx.hideLoading();
-			}
-		});
+		instance.loadLineInfo(options.id);
 	},
 
 	onReady: function() {},
 
 	onShow: function() {},
 
-	onHide: function() {
-		clearInterval(interval);
-		this.setData({
-			switchChecked: false
-		});
-	},
+	onHide: function() {},
 
 	onUnload: function() {
 		clearInterval(interval);
@@ -59,6 +37,43 @@ Page({
 
 	onShareAppMessage: function() {},
 
+	loadLineInfo: function(id) {
+		var instance = this;
+		var lineId = id;
+		wx.showLoading({
+			title: '拉取线路详情',
+			mask: true
+		});
+		wx.request({
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.getLineInfo.php',
+			method: 'GET',
+			data: {id: lineId},
+			success: function(res) {
+				instance.setData({
+					lineInfo: res.data.lineInfo,
+					totalStops: res.data.totalStops,
+					stops: res.data.stops
+				});
+			},
+			fail: function() {
+				wx.showModal({
+					title: '请求超时',
+					content: '可能是您的网络环境不太好，亦或者是服务端出现了故障',
+					confirmText: '重新加载',
+					cancelText: '取消',
+					success: function(res) {
+						if (res.confirm) {
+							instance.loadLineInfo(lineId);
+						}
+					}
+				});
+			},
+			complete: function() {
+				wx.hideLoading();
+			}
+		});
+	},
+
 	refresh: function(e) {
 		var lineId = e.currentTarget.id;
 		var instance = this;
@@ -72,30 +87,32 @@ Page({
 			data: {id: lineId},
 			success: function(res) {
 				instance.setData({stops: res.data.stops});
+			},
+			fail: function() {
+				wx.showModal({
+					title: '请求超时',
+					content: '可能是您的网络环境不太好，亦或者是服务端出现了故障',
+					confirmText: '重新加载',
+					cancelText: '取消',
+					success: function(res) {
+						if (res.confirm) {
+							instance.refresh();
+						}
+					}
+				});
+			},
+			complete: function() {
 				wx.hideLoading();
 			}
 		});
 	},
 
 	autoRefresh: function(e) {
-		var lineId = e.currentTarget.id;
 		var instance = this;
 		if (e.detail.value) {
 			interval = setInterval(function() {
-				wx.showLoading({
-					title: 'Loading',
-					mask: true
-				});
-				wx.request({
-					url: 'https://hbus.scau.edu.cn/wxss/wxss.refreshStop.php',
-					method: 'GET',
-					data: {id: lineId},
-					success: function(res) {
-						instance.setData({stops: res.data.stops});
-						wx.hideLoading();
-					}
-				});
-			}, 15000);
+				instance.refresh(e);
+			}, 5000);
 		} else {
 			clearInterval(interval);
 		}
