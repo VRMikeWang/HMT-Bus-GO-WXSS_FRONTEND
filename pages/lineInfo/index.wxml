@@ -4,7 +4,7 @@
 <page>
 	<view class="page">
 		<view class="page__hd">
-			<view class="page__title">{{lineInfo[0].line_name}} [{{lineInfo[0].line_start}} 开往 {{lineInfo[0].line_end}}]</view>
+			<view class="page__title">{{lineInfo[0].line_name}} [ {{lineInfo[0].line_start}} 开往 {{lineInfo[0].line_end}} ]</view>
 			<view class="page__desc">发班时间：{{lineInfo[0].first_bus}} ~ {{lineInfo[0].last_bus}}</view>
 		</view>
 
@@ -34,6 +34,17 @@
 						</view>
 					</navigator>
 				</block>
+			</view>
+			<view class="weui-cells__title">发车时刻表</view>
+			<view class="weui-cells weui-cells_after-title">
+				<navigator class="weui-cell weui-cell_access" url="/pages/timetable/index?id={{lineInfo[0].line_id}}&type=weekday" hover-class="weui-cell_active">
+					<view class="weui-cell__bd">查看工作日时刻表</view>
+					<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+				</navigator>
+				<navigator class="weui-cell weui-cell_access" url="/pages/timetable/index?id={{lineInfo[0].line_id}}&type=weekend" hover-class="weui-cell_active">
+					<view class="weui-cell__bd">查看周末节假日时刻表</view>
+					<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+				</navigator>
 			</view>
 		</view>
 	</view>

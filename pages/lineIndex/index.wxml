@@ -14,7 +14,7 @@
 			<view class="weui-cells weui-cells_after-title">
 				<block wx:for="{{lineList.line1}}" wx:for-item="line1">
 					<navigator class="weui-cell weui-cell_access" url="/pages/lineInfo/index?id={{line1.line_id}}" hover-class="weui-cell_active">
-						<view class="weui-cell__bd">{{line1.line_name}} [{{line1.line_start}} 开往 {{line1.line_end}}]</view>
+						<view class="weui-cell__bd">{{line1.line_name}} [ {{line1.line_start}} 开往 {{line1.line_end}} ]</view>
 						<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 					</navigator>
 				</block>
