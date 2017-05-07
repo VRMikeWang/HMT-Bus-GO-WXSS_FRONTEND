@@ -38,7 +38,7 @@ Page({
 			mask: false
 		});
 		wx.request({
-			url: 'https://hbus.scau.edu.cn/wxss/wxss.getLineList.php',
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.GetLineList.php',
 			method: 'GET',
 			success: function(res) {
 				instance.setData({lineList: res.data});

@@ -19,7 +19,7 @@ Page({
 		var instance = this;
 		var stopName = options.name;
 		wx.request({
-			url: 'https://hbus.scau.edu.cn/wxss/wxss.stopSearch.php',
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.StopSearch.php',
 			method: 'GET',
 			data: {name: stopName},
 			success: function(res) {

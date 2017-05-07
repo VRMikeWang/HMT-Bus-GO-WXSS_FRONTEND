@@ -38,7 +38,7 @@ Page({
 			mask: true
 		});
 		wx.request({
-			url: 'https://hbus.scau.edu.cn/wxss/wxss.getStopInfo.php',
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.GetStopInfo.php',
 			method: 'GET',
 			data: {
 				id: stopId

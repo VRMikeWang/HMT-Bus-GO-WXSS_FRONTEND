@@ -44,7 +44,7 @@ Page({
 			mask: false
 		});
 		wx.request({
-			url: 'https://hbus.scau.edu.cn/wxss/wxss.getStopList.php',
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.GetStopList.php',
 			method: 'GET',
 			success: function(res) {
 				instance.setData({stopList: res.data.stopList});

@@ -45,7 +45,7 @@ Page({
 			mask: true
 		});
 		wx.request({
-			url: 'https://hbus.scau.edu.cn/wxss/wxss.getLineInfo.php',
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.GetLineInfo.php',
 			method: 'GET',
 			data: {id: lineId},
 			success: function(res) {
@@ -82,7 +82,7 @@ Page({
 			mask: true
 		});
 		wx.request({
-			url: 'https://hbus.scau.edu.cn/wxss/wxss.refreshStop.php',
+			url: 'https://hbus.scau.edu.cn/wxss/wxss.RefreshStop.php',
 			method: 'GET',
 			data: {id: lineId},
 			success: function(res) {
