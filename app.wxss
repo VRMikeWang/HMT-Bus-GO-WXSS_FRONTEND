@@ -41,13 +41,18 @@ page {
 }
 
 button[type="primary"] {
-color: #FFFFFF;
-background-color: #0099FF;
+	color: #FFFFFF;
+	background-color: #0099FF;
 }
 
+button[disabled][type="primary"] {
+	background-color: rgba(0, 153, 255, 0.3);
+}
+
+
 .button-hover[type="primary"] {
-color: rgba(255, 255, 255,0.6);
-background-color: #006699;
+	color: rgba(255, 255, 255,0.6);
+	background-color: #006699;
 }
 
 image.banner {
