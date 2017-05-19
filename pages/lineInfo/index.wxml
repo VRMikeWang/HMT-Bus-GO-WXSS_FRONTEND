@@ -20,6 +20,12 @@
 			<view class="wrap"></view>
 			<view class="page__bd page__bd_spacing">
 				<button class="weui-btn" type="primary" id="{{lineInfo[0].line_id}}" bindtap="refresh">刷新数据</button>
+				<block wx:if="{{inverseLineId}}">
+					<button class="weui-btn" type="primary" id="{{inverseLineId}}" bindtap="viewInverse">查看反向线路走向</button>
+				</block>
+				<block wx:else>
+					<button class="weui-btn" type="primary" disabled="disabled">单行线，无法查看反向线路</button>
+				</block>
 			</view>
 
 			<view class="weui-cells__title">途经站点</view>

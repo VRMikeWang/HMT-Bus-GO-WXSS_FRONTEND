@@ -11,7 +11,10 @@ var interval = null;
 
 Page({
 
-	data: {switchChecked: false},
+	data: {
+		switchChecked: false,
+		inverseLineId: 0
+	},
 
 	onLoad: function(options) {
 		var instance = this;
@@ -52,7 +55,8 @@ Page({
 				instance.setData({
 					lineInfo: res.data.lineInfo,
 					totalStops: res.data.totalStops,
-					stops: res.data.stops
+					stops: res.data.stops,
+					inverseLineId: res.data.lineInfo[0].line_inverse
 				});
 			},
 			fail: function() {
@@ -116,6 +120,11 @@ Page({
 		} else {
 			clearInterval(interval);
 		}
+	},
+
+	viewInverse: function(e) {
+		var lineId = e.currentTarget.id;
+		wx.redirectTo({url: '/pages/lineInfo/index?id=' + lineId});
 	}
 
 });
