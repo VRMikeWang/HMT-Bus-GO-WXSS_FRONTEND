@@ -10,7 +10,8 @@
 Page({
 
 	data: {
-		stopList: null
+		stopList: null,
+		loaded: false
 	},
 
 	onLoad: function(options) {},
@@ -47,7 +48,7 @@ Page({
 			url: 'https://hbus.scau.edu.cn/wxss/wxss.GetStopList.php',
 			method: 'GET',
 			success: function(res) {
-				instance.setData({stopList: res.data.stopList});
+				instance.setData({stopList: res.data.stopList, loaded: true});
 			},
 			fail: function() {
 				wx.showModal({

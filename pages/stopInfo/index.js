@@ -9,7 +9,9 @@
 
 Page({
 
-	data: {},
+	data: {
+		loaded: false
+	},
 
 	onLoad: function(options) {
 		var instance = this;
@@ -47,7 +49,8 @@ Page({
 				instance.setData({
 					stopInfo: res.data.stopInfo,
 					totalLine: res.data.totalLine,
-					lineList: res.data.lineList
+					lineList: res.data.lineList,
+					loaded: true
 				});
 			},
 			fail: function() {

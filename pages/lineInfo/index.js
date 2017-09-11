@@ -13,7 +13,8 @@ Page({
 
 	data: {
 		switchChecked: false,
-		inverseLineId: 0
+		inverseLineId: 0,
+		loaded: false
 	},
 
 	onLoad: function(options) {
@@ -30,7 +31,9 @@ Page({
 	onUnload: function() {
 		clearInterval(interval);
 		this.setData({
-			switchChecked: false
+			switchChecked: false,
+			loaded: false,
+			inverseLineId: 0
 		});
 	},
 
@@ -56,7 +59,8 @@ Page({
 					lineInfo: res.data.lineInfo,
 					totalStops: res.data.totalStops,
 					stops: res.data.stops,
-					inverseLineId: res.data.lineInfo[0].line_inverse
+					inverseLineId: res.data.lineInfo[0].line_inverse,
+					loaded: true
 				});
 			},
 			fail: function() {
@@ -82,7 +86,7 @@ Page({
 		var lineId = e.currentTarget.id;
 		var instance = this;
 		wx.showLoading({
-			title: 'Loading',
+			title: '刷新实时信息',
 			mask: true
 		});
 		wx.request({

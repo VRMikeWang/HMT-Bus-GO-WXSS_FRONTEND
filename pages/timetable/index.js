@@ -16,7 +16,8 @@ Page({
 		lineStart: null,
 		lineEnd: null,
 		timetable: null,
-		tableCount: null
+		tableCount: null,
+		loaded: false
 	},
 
 	onLoad: function(options) {
@@ -73,7 +74,8 @@ Page({
 					lineStart: data.line_start,
 					lineEnd: data.line_end,
 					timetable: data.timetable,
-					tableCount: data.timetable.length
+					tableCount: data.timetable.length,
+					loaded: true
 				});
 			},
 			fail: function() {

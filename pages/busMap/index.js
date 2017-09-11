@@ -106,7 +106,7 @@ Page({
 			url: 'https://hbus.scau.edu.cn/wxss/wxss.GetPolyline.php',
 			method: 'GET',
 			success: function(res) {
-				instance.setData({lineList: res.data});
+				instance.setData({lineList: res.data, lineListLoaded: true});
 			},
 			fail: function() {
 				instance.loadBusLine();
@@ -138,7 +138,8 @@ Page({
 			success: function(res) {
 				instance.setData({
 					online: res.data.online,
-					offline: res.data.offline
+					offline: res.data.offline,
+					deviceLoaded: true
 				});
 			},
 			fail: function() {

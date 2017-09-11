@@ -27,15 +27,17 @@
 				</view>
 			</form>
 
-			<view class="weui-cells__title">亦可从下面的站点列表检索站点信息</view>
-			<view class="weui-cells weui-cells_after-title">
-				<block wx:for="{{stopList}}" wx:for-item="list">
-					<navigator class="weui-cell weui-cell_access" url="/pages/stopInfo/index?id={{list.stop_id}}" hover-class="weui-cell_active">
-						<view class="weui-cell__bd">{{list.stop_name}}</view>
-						<view class="weui-cell__ft weui-cell__ft_in-access"></view>
-					</navigator>
-				</block>
-			</view>
+			<block wx:if="{{loaded}}">
+				<view class="weui-cells__title">亦可从下面的站点列表检索站点信息</view>
+				<view class="weui-cells weui-cells_after-title">
+					<block wx:for="{{stopList}}" wx:for-item="list">
+						<navigator class="weui-cell weui-cell_access" url="/pages/stopInfo/index?id={{list.stop_id}}" hover-class="weui-cell_active">
+							<view class="weui-cell__bd">{{list.stop_name}}</view>
+							<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+						</navigator>
+					</block>
+				</view>
+			</block>
 		</view>
 	</view>
 </page>

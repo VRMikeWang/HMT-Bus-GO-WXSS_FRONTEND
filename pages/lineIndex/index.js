@@ -10,7 +10,8 @@
 Page({
 
 	data: {
-		lineList: null
+		lineList: null,
+		loaded: false
 	},
 
 	onLoad: function(options) {},
@@ -19,6 +20,7 @@ Page({
 
 	onShow: function() {
 		this.loadLineList();
+
 	},
 
 	onHide: function() {},
@@ -41,7 +43,7 @@ Page({
 			url: 'https://hbus.scau.edu.cn/wxss/wxss.GetLineList.php',
 			method: 'GET',
 			success: function(res) {
-				instance.setData({lineList: res.data});
+				instance.setData({lineList: res.data, loaded: true});
 			},
 			fail: function() {
 				wx.showModal({
