@@ -2,6 +2,7 @@
 <!-- 站点查询首页 -->
 
 <page>
+
 	<view class="page">
 		<view class="page__hd">
 			<view class="page__title">校巴站点查询</view>
