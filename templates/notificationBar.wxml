@@ -1,0 +1,8 @@
+<template name="notification-bar">
+  <view class="weui-cells weui-cells_after-title">
+    <navigator class="weui-cell weui-cell_access weui-cell_access--notification" url="/pages/busMap/index" hover-class="weui-cell_active">
+      <view class="weui-cell__bd"><icon size="20" type="info" class="notification-icon"></icon> Notification Area</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+</template>
