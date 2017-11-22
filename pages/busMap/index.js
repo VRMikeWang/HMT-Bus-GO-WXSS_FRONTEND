@@ -11,6 +11,9 @@ var app = getApp();
 
 var interval = null;
 
+//是否显示过微信支付提示框
+var isShowNoticeDialog = false;
+
 Page({
 
 	data: {
@@ -58,6 +61,17 @@ Page({
 
 	onReady: function() {
 		this.mapCtx = wx.createMapContext('busMap');
+		if (!isShowNoticeDialog) {
+			wx.showModal({
+				title: '部分校巴已支持微信支付',
+				content: '地图上标记了微信图标的校巴能使用微信支付了！绑定校园卡后打开付款码就能刷码乘车了哦~',
+				confirmText: '我知道了',
+				confirmColor: "#0099ff",
+				showCancel: false,
+				success: function(res) {}
+			});
+			isShowNoticeDialog = true;
+		}
 	},
 
 	onShow: function() {
