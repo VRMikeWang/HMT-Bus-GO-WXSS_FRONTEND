@@ -83,3 +83,12 @@ image.banner {
 .text-error {
 	color: #E64340;
 }
+
+.weui-cell_access--notification {
+  background-color: #FFFFCC;
+  box-shadow: 0px 0px 3px #666;
+}
+
+.notification-icon {
+  padding-bottom: 3px;
+}
