@@ -58,6 +58,7 @@ Page({
 					title: '请求超时',
 					content: '可能是您的网络环境不太好，亦或者是服务端出现了故障',
 					confirmText: '重新加载',
+					confirmColor: "#0099ff",
 					cancelText: '取消',
 					success: function(res) {
 						if (res.confirm) {
